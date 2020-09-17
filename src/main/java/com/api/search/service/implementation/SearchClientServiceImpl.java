@@ -48,10 +48,11 @@ public class SearchClientServiceImpl implements SearchClientService {
 	 */
 	@Async
 	@Override
-	public CompletableFuture<List<ItemVO>> searchBooks(String text) {
+	public CompletableFuture<List<ItemVO>> searchBooks(String text, Long maxResults) {
 		logger.info("Inside searchBooks method");
 		List<ItemVO> itemsVO = new ArrayList<ItemVO>();
-		String url = properties.getBook() + text;
+		String url = properties.getBook() + text + "&maxResults=" + maxResults;
+		logger.info("Books URL :: " + url);
 		Object object = config.restTemplate.getForObject(url, Object.class);
 		/*
 		 * default json deserialize picks linkedhashmap for the non-identifiable
@@ -137,10 +138,11 @@ public class SearchClientServiceImpl implements SearchClientService {
 	 */
 	@Async
 	@Override
-	public CompletableFuture<List<ItemVO>> searchAlbums(String text) {
+	public CompletableFuture<List<ItemVO>> searchAlbums(String text, Long limit) {
 		logger.info("Inside searchAlbums method");
 		List<ItemVO> itemsVO = new ArrayList<ItemVO>();
-		String url = properties.getAlbum() + text;
+		String url = properties.getAlbum() + text + "&limit=" + limit;
+		logger.info("Album URL :: " + url);
 		Object object = config.restTemplate.getForObject(url, Object.class);
 		/*
 		 * default json deserialize picks linkedhashmap for the non-identifiable

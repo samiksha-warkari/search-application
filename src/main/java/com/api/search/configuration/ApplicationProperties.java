@@ -13,10 +13,12 @@ import org.springframework.context.annotation.Configuration;
  * @Date : 14-Sep-2020
  */
 @Configuration
-@ConfigurationProperties(prefix = "baseurl")
+@ConfigurationProperties
 public class ApplicationProperties {
 	private String book;
 	private String album;
+	private Long maxResults;
+	private Long limit;
 
 	public String getBook() {
 		return book;
@@ -32,6 +34,22 @@ public class ApplicationProperties {
 
 	public void setAlbum(String album) {
 		this.album = album;
+	}
+
+	public Long getMaxResults() {
+		return maxResults;
+	}
+
+	public void setMaxResults(Long maxResults) {
+		this.maxResults = maxResults;
+	}
+
+	public Long getLimit() {
+		return limit;
+	}
+
+	public void setLimit(Long limit) {
+		this.limit = limit;
 	}
 
 }

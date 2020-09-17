@@ -36,7 +36,7 @@ public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
 		logger.info("Inside handleInValidRequestParameterException method");
 		List<String> details = new ArrayList<>();
 		details.add(ex.getLocalizedMessage());
-		ErrorResponse error = new ErrorResponse("Invalid input", details);
+		ErrorResponse error = new ErrorResponse(ex.getMessage(), details);
 		return new ResponseEntity<Object>(error, HttpStatus.BAD_REQUEST);
 	}
 
